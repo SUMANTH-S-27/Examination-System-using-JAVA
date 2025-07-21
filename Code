@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class ExaminationSystem {
+    private static final String USERNAME = "student";
+    private static final String PASSWORD = "1234";
+    private static final Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        if (login()) {
+            System.out.println("\nWelcome to Exam");
+            startExam();
+        } else {
+            System.out.println("\nLogin Failed. Exiting...");
+        }
+    }
+
+    private static boolean login() {
+        System.out.println("====== LOGIN ======");
+        System.out.print("Enter Username: ");
+        String user = sc.nextLine();
+        System.out.print("Enter Password: ");
+        String pass = sc.nextLine();
+        return user.equals(USERNAME) && pass.equals(PASSWORD);
+    }
+
+    private static void startExam() {
+        int score = 0;
+        System.out.println("\n====== JAVA MCQ TEST ======\n");
+
+        System.out.println("Q1. Which of the following is a valid data type in Java?");
+        System.out.println("A. number");
+        System.out.println("B. int");
+        System.out.println("C. real");
+        System.out.println("D. doubleint");
+        System.out.print("Answer: ");
+        if (sc.nextLine().equalsIgnoreCase("B")) score++;
+
+        System.out.println("\nQ2. Which keyword is used to inherit a class in Java?");
+        System.out.println("A. implements");
+        System.out.println("B. inherits");
+        System.out.println("C. extends");
+        System.out.println("D. instanceOf");
+        System.out.print("Answer: ");
+        if (sc.nextLine().equalsIgnoreCase("C")) score++;
+
+        System.out.println("\nQ3. Which method is the entry point of a Java program?");
+        System.out.println("A. start()");
+        System.out.println("B. run()");
+        System.out.println("C. main()");
+        System.out.println("D. init()");
+        System.out.print("Answer: ");
+        if (sc.nextLine().equalsIgnoreCase("C")) score++;
+
+        System.out.println("\nQ4. Which of these is used to take input from the user in Java?");
+        System.out.println("A. Reader");
+        System.out.println("B. Scanner");
+        System.out.println("C. Buffer");
+        System.out.println("D. ConsoleInput");
+        System.out.print("Answer: ");
+        if (sc.nextLine().equalsIgnoreCase("B")) score++;
+
+        System.out.println("\nQ5. Which of these is not a Java access modifier?");
+        System.out.println("A. public");
+        System.out.println("B. private");
+        System.out.println("C. protected");
+        System.out.println("D. internal");
+        System.out.print("Answer: ");
+        if (sc.nextLine().equalsIgnoreCase("D")) score++;
+
+        showResult(score);
+    }
+
+    private static void showResult(int score) {
+        int total = 5;
+        System.out.println("\n====== RESULT ======");
+        System.out.println("Total Questions: " + total);
+        System.out.println("Correct Answers: " + score);
+        System.out.println("Wrong Answers: " + (total - score));
+        System.out.println("Your Score: " + (score * 20) + "%");
+        System.out.println("Result: " + (score >= 3 ? "PASS" : "FAIL"));
+        System.out.println("Thank you for taking the exam!");
+    }
+}
